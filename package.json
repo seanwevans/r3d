@@ -1,7 +1,7 @@
 {
   "name": "r3d",
   "private": true,
-  "homepage": "https://seanwevans.github.io/WaveSim",
+  "homepage": "https://seanwevans.github.io/r3d",
   "version": "0.0.0",
   "type": "module",  
   "scripts": {
