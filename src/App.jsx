@@ -45,7 +45,7 @@ const App = () => {
   const [blueTrailLength, setBlueTrailLength] = useState(50);
   
   const [mainSphereRotation, setMainSphereRotation] = useState(0.005);
-  const [checkerSize, setCheckerSize] = useState(64);  
+  const [checkerSize, setCheckerSize] = useState(32);
   
   const [showControls, setShowControls] = useState(true);
   const [triangleArea, setTriangleArea] = useState(0);
@@ -76,13 +76,19 @@ const App = () => {
   
   return (
     <div className="flex flex-col p-4 w-screen h-screen bg-gray-200 mx-auto">
-      <div className="flex justify-between items-center mb-4">        
-        <div className="flex items-center gap-4">          
+      <div className="flex justify-between items-center mb-4">
+        <div className="flex items-center gap-4">
           <div className="text-sm font-medium flex items-center">
-            <AreaChart data={areaHistory} />            
+            <AreaChart data={areaHistory} />
           </div>
           <span>Triangle Area: <span className="text-blue-600">{triangleArea.toFixed(3)}</span></span>
         </div>
+        <button
+          onClick={() => setShowControls(prev => !prev)}
+          className="p-1 text-xs bg-gray-300 rounded"
+        >
+          {showControls ? 'Hide' : 'Show'} Controls
+        </button>
       </div>
 
       <div className="h-screen relative">
@@ -312,7 +318,8 @@ const ThreeDScene = ({ params }) => {
     redTrailLength = 100,
     greenTrailLength = 100,
     blueTrailLength = 100,
-    mainSphereRotation = 0.005,    
+    mainSphereRotation = 0.005,
+    checkerSize = 32,
     onTriangleAreaUpdate = () => {}
   } = params || {};
   
@@ -373,8 +380,8 @@ const ThreeDScene = ({ params }) => {
     scene.environment = cubeRenderTarget.texture;
         
     const size = 512;
-    const data = new Uint8Array(size * size * 4);    
-    const squareSize = 32;
+    const data = new Uint8Array(size * size * 4);
+    const squareSize = checkerSize;
     
     for (let y = 0; y < size; y++) {
       for (let x = 0; x < size; x++) {        
@@ -610,9 +617,9 @@ const ThreeDScene = ({ params }) => {
       state.isRightDragging = false;
     };
     
-    const handleWheel = (e) => {      
-      const zoomSpeed = 0.1;
-      state.cameraDistance += e.deltaY * 0.01;
+    const handleWheel = (e) => {
+      const zoomSpeed = 0.01;
+      state.cameraDistance += e.deltaY * zoomSpeed;
       state.cameraDistance = Math.max(1, Math.min(100, state.cameraDistance));
       updateCameraPosition();
       e.preventDefault();
