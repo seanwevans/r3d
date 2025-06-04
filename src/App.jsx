@@ -14,7 +14,6 @@ const App = () => {
 
   const [mainSphereRotation, setMainSphereRotation] = useState(0.005);
   const [checkerSize, setCheckerSize] = useState(64);
-
   const [showControls, setShowControls] = useState(true);
   const [triangleArea, setTriangleArea] = useState(0);
 
@@ -53,6 +52,12 @@ const App = () => {
             Triangle Area: <span className="text-blue-600">{triangleArea.toFixed(3)}</span>
           </span>
         </div>
+        <button
+          onClick={() => setShowControls(prev => !prev)}
+          className="p-1 text-xs bg-gray-300 rounded"
+        >
+          {showControls ? 'Hide' : 'Show'} Controls
+        </button>
       </div>
 
       <div className="h-screen relative">
@@ -77,6 +82,7 @@ const App = () => {
           setMainSphereRotation={setMainSphereRotation}
         />
       )}
+
     </div>
   );
 };
