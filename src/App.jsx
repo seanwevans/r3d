@@ -45,9 +45,6 @@ const App = () => {
   const [blueTrailLength, setBlueTrailLength] = useState(50);
   
   const [mainSphereRotation, setMainSphereRotation] = useState(0.005);
-  const [checkerSize, setCheckerSize] = useState(64);  
-  
-  const [showControls, setShowControls] = useState(true);
   const [triangleArea, setTriangleArea] = useState(0);
   
   const [areaHistory, setAreaHistory] = useState([]);
@@ -70,7 +67,6 @@ const App = () => {
     greenTrailLength,
     blueTrailLength,
     mainSphereRotation,
-    checkerSize,
     onTriangleAreaUpdate: setTriangleArea
   };
   
@@ -89,9 +85,8 @@ const App = () => {
         <ThreeDScene params={sceneParams} />
       </div>
       
-      {showControls && (
-        <div className="mb-4 p-2 bg-gray-100 rounded-lg">
-          <div className="flex flex-wrap items-center gap-2">
+      <div className="mb-4 p-2 bg-gray-100 rounded-lg">
+        <div className="flex flex-wrap items-center gap-2">
             {/* Red sphere controls */}
             <div className="flex items-center gap-1 p-1 bg-red-50 border border-red-200 rounded">
               <span className="text-xs font-medium text-red-700 mr-1">Red:</span>
@@ -295,8 +290,7 @@ const App = () => {
             </div>
           </div>
         </div>
-      )}
-    
+      
     </div>
   );
 };
@@ -610,8 +604,7 @@ const ThreeDScene = ({ params }) => {
       state.isRightDragging = false;
     };
     
-    const handleWheel = (e) => {      
-      const zoomSpeed = 0.1;
+    const handleWheel = (e) => {
       state.cameraDistance += e.deltaY * 0.01;
       state.cameraDistance = Math.max(1, Math.min(100, state.cameraDistance));
       updateCameraPosition();
@@ -774,7 +767,7 @@ const ThreeDScene = ({ params }) => {
       if (state.connectionLine && state.connectionLine.geometry) state.connectionLine.geometry.dispose();
       if (state.triangleFace && state.triangleFace.geometry) state.triangleFace.geometry.dispose();
     };
-  }, []);
+  }, [onTriangleAreaUpdate]);
 
   useEffect(() => {
     if (!sceneRef.current) return;
