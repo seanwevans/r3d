@@ -15,6 +15,8 @@ const ParameterControls = ({
   setBlueTrailLength,
   mainSphereRotation,
   setMainSphereRotation,
+  checkerSize,
+  setCheckerSize,
 }) => (
   <div className="mb-4 p-2 bg-gray-100 rounded-lg">
     <div className="flex flex-wrap items-center gap-2">
@@ -209,6 +211,36 @@ const ParameterControls = ({
             <button
               className="w-5 h-5 bg-gray-200 rounded-r flex items-center justify-center hover:bg-gray-300 text-xs"
               onClick={() => setMainSphereRotation(mainSphereRotation + 0.001)}
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-1 p-1 bg-gray-50 border border-gray-200 rounded">
+        <span className="text-xs font-medium mr-1">Checker:</span>
+        <div className="flex items-center">
+          <span className="text-xs">Size</span>
+          <div className="flex items-center ml-1">
+            <button
+              className="w-5 h-5 bg-gray-200 rounded-l flex items-center justify-center hover:bg-gray-300 text-xs"
+              onClick={() => setCheckerSize(Math.max(1, checkerSize - 1))}
+            >
+              -
+            </button>
+            <input
+              type="number"
+              min="1"
+              max="256"
+              step="1"
+              value={checkerSize}
+              onChange={(e) => setCheckerSize(parseInt(e.target.value, 10))}
+              className="w-12 h-5 text-xs text-center border-y outline-none"
+            />
+            <button
+              className="w-5 h-5 bg-gray-200 rounded-r flex items-center justify-center hover:bg-gray-300 text-xs"
+              onClick={() => setCheckerSize(checkerSize + 1)}
             >
               +
             </button>

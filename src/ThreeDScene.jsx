@@ -12,6 +12,7 @@ const ThreeDScene = ({ params }) => {
     greenTrailLength = 100,
     blueTrailLength = 100,
     mainSphereRotation = 0.005,
+    checkerSize = 64,
     onTriangleAreaUpdate = () => {},
   } = params || {};
 
@@ -78,7 +79,7 @@ const ThreeDScene = ({ params }) => {
 
     const size = 512;
     const data = new Uint8Array(size * size * 4);
-    const squareSize = 32;
+    const squareSize = checkerSize;
 
     for (let y = 0; y < size; y++) {
       for (let x = 0; x < size; x++) {

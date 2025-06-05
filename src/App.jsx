@@ -80,6 +80,8 @@ const App = () => {
           setBlueTrailLength={setBlueTrailLength}
           mainSphereRotation={mainSphereRotation}
           setMainSphereRotation={setMainSphereRotation}
+          checkerSize={checkerSize}
+          setCheckerSize={setCheckerSize}
         />
       )}
 
