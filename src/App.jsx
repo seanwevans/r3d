@@ -13,7 +13,6 @@ const App = () => {
   const [blueTrailLength, setBlueTrailLength] = useState(50);
 
   const [mainSphereRotation, setMainSphereRotation] = useState(0.005);
-  const [checkerSize, setCheckerSize] = useState(64);
   const [showControls, setShowControls] = useState(true);
   const [triangleArea, setTriangleArea] = useState(0);
 
@@ -37,7 +36,6 @@ const App = () => {
     greenTrailLength,
     blueTrailLength,
     mainSphereRotation,
-    checkerSize,
     onTriangleAreaUpdate: setTriangleArea,
   };
 
