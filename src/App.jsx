@@ -37,7 +37,6 @@ const App = () => {
     greenTrailLength,
     blueTrailLength,
     mainSphereRotation,
-    checkerSize,
     onTriangleAreaUpdate: setTriangleArea,
   };
 
