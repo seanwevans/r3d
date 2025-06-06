@@ -403,7 +403,7 @@ const ThreeDScene = ({ params }) => {
       if (state.connectionLine && state.connectionLine.geometry) state.connectionLine.geometry.dispose();
       if (state.triangleFace && state.triangleFace.geometry) state.triangleFace.geometry.dispose();
     };
-  }, []);
+  }, [onTriangleAreaUpdate]);
 
   useEffect(() => {
     if (!sceneRef.current) return;
